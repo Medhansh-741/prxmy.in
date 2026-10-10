@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { OpenSource } from "@/components/open-source";
 import { Projects } from "@/components/projects";
 import { Arrow, ExtLink, Section } from "@/components/ui";
@@ -37,14 +36,12 @@ export default function Home() {
             ))}
           </ul>
         </div>
-        <Image
-          src={profile.photo}
-          alt={profile.name}
-          width={112}
-          height={112}
-          priority
-          className="size-24 shrink-0 rounded-full border border-line object-cover sm:size-28"
-        />
+        <div
+          aria-hidden
+          className="flex size-24 shrink-0 items-center justify-center rounded-full border border-line bg-beige font-serif text-4xl tracking-tight select-none sm:size-28 sm:text-[2.6rem]"
+        >
+          {profile.initials}
+        </div>
       </header>
 
       <Section id="about" title="About">

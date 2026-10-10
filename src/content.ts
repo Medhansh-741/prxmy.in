@@ -57,7 +57,7 @@ export const profile = {
   name: "Prakhar Gupta",
   role: "Backend & Full-Stack Developer",
   site: "https://prxmy.in",
-  photo: "/prakhar.jpg",
+  initials: "PG",
   location: "Jaipur, India",
   tagline: "Backend & full-stack developer. Second year of CS at Manipal University Jaipur.",
   summary:
