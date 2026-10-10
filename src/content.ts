@@ -95,24 +95,6 @@ export const experience: Experience[] = [
       { label: "schrader.co", href: "https://schrader.co" },
     ],
   },
-  {
-    org: "Bits&Bytes",
-    href: "https://github.com/gobitsnbytes/bitsnbytes-discord-utility",
-    role: "Backend Developer Intern",
-    place: "Remote",
-    period: "Apr – May 2026",
-    points: [
-      "Worked on the operations bot for a 1,000-member Discord server spread across 12+ city chapters.",
-      "Moved team, event and report data off Notion into a local SQLite engine, and wrote the city-based access-control layer with tests.",
-      "Built /meet-schedule with reminders and temporary voice channels, plus per-speaker meeting recordings merged with ffmpeg for transcripts.",
-    ],
-    links: [
-      {
-        label: "21 merged PRs",
-        href: "https://github.com/gobitsnbytes/bitsnbytes-discord-utility/pulls?q=is%3Apr+author%3Aprx-my+is%3Amerged",
-      },
-    ],
-  },
 ];
 
 export const projects: Project[] = [
@@ -121,7 +103,7 @@ export const projects: Project[] = [
     year: "2026",
     badge: "Grand Finale winner, India Innovates '26",
     summary:
-      "Civic grievance platform for Delhi, running as a ward pilot. Citizens file through a Gemini chatbot, a web form or WhatsApp, and each complaint goes to one of 10 authorities against an SLA.",
+      "Civic grievance platform for Delhi, running as a ward pilot. 300+ users, all organic from X, Reddit and campus. Complaints come in through a Gemini chatbot, a web form or WhatsApp and go to one of 10 authorities against an SLA.",
     hardPart:
       "Catching duplicate complaints within 20 m with PostGIS before they're filed, scoring 250 ward polygons live, and escalating overdue tickets inside Postgres instead of app code.",
     stack: ["Next.js", "FastAPI", "PostGIS", "Supabase", "Gemini", "Redis"],
@@ -164,16 +146,6 @@ export const projects: Project[] = [
       "Oracle's edge blocks headless Chromium, so it keeps one real browser alive over CDP, imports cookies from your browser (including Chrome's App-Bound Encryption on Windows), and falls back to Docker with noVNC.",
     stack: ["Node.js", "Playwright", "Docker"],
     links: [{ label: "Source", href: "https://github.com/prx-my/oracle-academy" }],
-  },
-  {
-    name: "nptel-quiz",
-    year: "2026",
-    summary:
-      "A CLI for NPTEL quizzes, whose questions are served as images. Reads them, answers through an AI agent or Gemini, and submits.",
-    hardPart:
-      "OCR runs on-device: a Swift binary using Apple Vision is compiled at install on macOS, and Windows uses its built-in OCR. Question images never leave the machine.",
-    stack: ["Node.js", "Playwright", "Swift"],
-    links: [{ label: "Source", href: "https://github.com/prx-my/nptel-quiz" }],
   },
   {
     name: "Leafline",
