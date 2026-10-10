@@ -1,69 +1,149 @@
 import Image from "next/image";
+import { OpenSource } from "@/components/open-source";
+import { Projects } from "@/components/projects";
+import { Arrow, ExtLink, Section } from "@/components/ui";
+import {
+  about,
+  education,
+  experience,
+  openSource,
+  profile,
+  projects,
+  wins,
+} from "@/content";
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+    <main className="mx-auto max-w-[680px] px-6 pt-20 pb-28 sm:pt-28">
+      <header className="flex flex-col-reverse gap-6 sm:flex-row sm:items-start sm:justify-between">
+        <div>
+          <h1 className="font-serif text-5xl leading-none tracking-tight">{profile.name}</h1>
+          <p className="mt-4 max-w-md text-lg leading-snug text-muted">{profile.tagline}</p>
+          <p className="mt-5 text-sm text-muted">
+            <span className="mr-2 font-mono text-xs tracking-wide text-faint uppercase">Now</span>
+            {profile.now}
           </p>
+          <ul className="mt-5 flex flex-wrap gap-x-5 gap-y-2 text-sm">
+            <li>
+              <ExtLink href={`mailto:${profile.email}`}>{profile.email}</ExtLink>
+            </li>
+            {profile.links.map((l) => (
+              <li key={l.label}>
+                <ExtLink href={l.href}>
+                  {l.label}
+                  <Arrow />
+                </ExtLink>
+              </li>
+            ))}
+          </ul>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+        <Image
+          src={profile.photo}
+          alt={profile.name}
+          width={112}
+          height={112}
+          priority
+          className="size-24 shrink-0 rounded-full border border-line object-cover sm:size-28"
+        />
+      </header>
+
+      <Section id="about" title="About">
+        <div className="flex flex-col gap-4 leading-relaxed">
+          {about.map((p) => (
+            <p key={p}>{p}</p>
+          ))}
         </div>
-      </main>
-    </div>
+      </Section>
+
+      <Section id="experience" title="Experience">
+        <div className="flex flex-col gap-8">
+          {experience.map((e) => (
+            <div key={e.org}>
+              <div className="flex flex-wrap items-baseline justify-between gap-x-4">
+                <h3 className="font-medium">
+                  {e.href ? <ExtLink href={e.href}>{e.org}</ExtLink> : e.org}
+                  <span className="font-normal text-muted">, {e.role}</span>
+                </h3>
+                <span className="font-mono text-xs text-faint">{e.period}</span>
+              </div>
+              <p className="text-sm text-faint">{e.place}</p>
+              <ul className="mt-3 flex flex-col gap-2 text-[0.95rem] leading-relaxed text-muted">
+                {e.points.map((pt) => (
+                  <li key={pt} className="relative pl-4 before:absolute before:left-0 before:content-['–']">
+                    {pt}
+                  </li>
+                ))}
+              </ul>
+              {e.links && (
+                <ul className="mt-3 flex flex-wrap gap-x-4 gap-y-1 text-sm">
+                  {e.links.map((l) => (
+                    <li key={l.href}>
+                      <ExtLink href={l.href}>
+                        {l.label}
+                        <Arrow />
+                      </ExtLink>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
+          ))}
+        </div>
+      </Section>
+
+      <Section id="projects" title="Projects">
+        <Projects items={projects} />
+      </Section>
+
+      {openSource.length > 0 && (
+        <Section id="open-source" title="Open source">
+          <OpenSource repos={openSource} />
+        </Section>
+      )}
+
+      <Section id="wins" title="Recognition">
+        <ul className="divide-y divide-line border-y border-line">
+          {wins.map((w) => (
+            <li key={w.title} className="flex items-baseline justify-between gap-4 py-3">
+              <div>
+                <p>{w.href ? <ExtLink href={w.href}>{w.title}</ExtLink> : w.title}</p>
+                <p className="text-sm text-muted">{w.context}</p>
+              </div>
+              <span className="font-mono text-xs text-faint">{w.year}</span>
+            </li>
+          ))}
+        </ul>
+      </Section>
+
+      <Section id="education" title="Education">
+        <div className="flex flex-col gap-5">
+          {education.map((s) => (
+            <div key={s.name} className="flex flex-wrap items-baseline justify-between gap-x-4">
+              <div>
+                <h3 className="font-medium">{s.name}</h3>
+                <p className="text-sm text-muted">
+                  {s.degree}
+                  {s.note && <span className="text-faint"> · {s.note}</span>}
+                </p>
+              </div>
+              <span className="font-mono text-xs text-faint">{s.period}</span>
+            </div>
+          ))}
+        </div>
+      </Section>
+
+      <footer className="mt-24 border-t border-line pt-10">
+        <p className="font-serif text-3xl tracking-tight">Let&apos;s build something.</p>
+        <p className="mt-3 max-w-md leading-relaxed text-muted">
+          Open to backend and full-stack internships and interesting collaborations.
+        </p>
+        <ExtLink href={`mailto:${profile.email}`} className="mt-5 inline-block text-lg">
+          {profile.email}
+        </ExtLink>
+        <p className="mt-16 font-mono text-xs text-faint">
+          © 2026 {profile.name} · {profile.location}
+        </p>
+      </footer>
+    </main>
   );
 }
