@@ -35,6 +35,12 @@ export default function Home() {
               </li>
             ))}
           </ul>
+          <a
+            href="/resume"
+            className="mt-6 inline-flex items-center gap-2 rounded-full border border-ink bg-ink px-5 py-2 text-sm text-ivory transition-colors hover:bg-transparent hover:text-ink focus-visible:bg-transparent focus-visible:text-ink"
+          >
+            Resume <span aria-hidden>↗</span>
+          </a>
         </div>
         <div
           aria-hidden
