@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { AwsLogo } from "@/components/aws-logo";
 import { SocialIcon, type SocialKind } from "@/components/social-icon";
 
 export const metadata: Metadata = {
@@ -60,9 +61,12 @@ const order: SocialKind[] = ["github", "linkedin", "x", "email"];
 export default function AwsEnv() {
   return (
     <main className="mx-auto max-w-5xl px-6 pt-16 pb-24 sm:pt-24">
-      <header>
-        <p className="font-mono text-xs tracking-wide text-faint uppercase">Preview</p>
-        <h1 className="mt-3 font-serif text-5xl leading-none tracking-tight">aws~env</h1>
+      <header className="flex flex-col-reverse gap-6 sm:flex-row sm:items-end sm:justify-between">
+        <div>
+          <p className="font-mono text-xs tracking-wide text-faint uppercase">Preview</p>
+          <h1 className="mt-3 font-serif text-5xl leading-none tracking-tight">aws~env</h1>
+        </div>
+        <AwsLogo />
       </header>
 
       <div className="mt-10 grid items-start gap-8 lg:grid-cols-[minmax(0,1fr)_280px] lg:gap-12">
