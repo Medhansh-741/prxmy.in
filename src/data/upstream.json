@@ -1,0 +1,32 @@
+{
+  "fetchedAt": "2026-11-17T17:45:21.424474+00:00",
+  "repositories": [
+    {
+      "repository": "OWASP/cve-lite-cli",
+      "count": 30,
+      "pullRequest": {
+        "number": 1674,
+        "title": "ci: check pull requests against the contribution rules (#1669)",
+        "url": "https://github.com/OWASP/cve-lite-cli/pull/1674"
+      }
+    },
+    {
+      "repository": "sugarlabs/musicblocks-v4",
+      "count": 5,
+      "pullRequest": {
+        "number": 942,
+        "title": "#936 | refactor(masonry): share the drag trailing-click suppression guard",
+        "url": "https://github.com/sugarlabs/musicblocks-v4/pull/942"
+      }
+    },
+    {
+      "repository": "AWS-env/environmental-hacks",
+      "count": 101,
+      "pullRequest": {
+        "number": 563,
+        "title": "#562 | feat(impact): energy and carbon & water cards with cited water consumption",
+        "url": "https://github.com/AWS-env/environmental-hacks/pull/563"
+      }
+    }
+  ]
+}

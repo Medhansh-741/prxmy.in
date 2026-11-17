@@ -1,4 +1,4 @@
-// Every word on the site lives here. Layout code never hardcodes copy.
+// Curated portfolio copy. GitHub metrics live separately in the verified snapshot.
 
 export type Link = { label: string; href: string };
 
@@ -10,10 +10,18 @@ export type Experience = {
   period: string;
   points: string[];
   links?: Link[];
+  mergedPRs?: number;
 };
 
 export type Project = {
   name: string;
+  slug: string;
+  // Narration for the case's caption box: a sentence, never a category label.
+  caption: string;
+  // What I did, in one line. Missing ones show a pencil note on the case file.
+  myPart?: string;
+  preview?: string;
+  coverLabel?: string;
   year: string;
   badge?: string;
   summary: string;
@@ -55,11 +63,13 @@ export type School = {
 
 export const profile = {
   name: "Prakhar Gupta",
+  brand: "prxmy",
   role: "Backend & Full-Stack Developer",
-  site: "https://prxmy.in",
+  site: "https://www.prxmy.in",
   initials: "PG",
   location: "Jaipur, India",
   tagline: "Backend & full-stack developer. Second year of CS at Manipal University Jaipur.",
+  availability: "Open to full-time roles & freelance projects",
   summary:
     "Backend and full-stack developer from Jaipur. Web developer at Schrader, contributor to OWASP and Sugar Labs, and winner of the India Innovates '26 grand finale.",
   now: "Writing compute-waste detectors at WeMakeDevs × AWS Environmental Hacks. Fixing bugs in OWASP cve-lite-cli.",
@@ -71,9 +81,38 @@ export const profile = {
   ] satisfies Link[],
 };
 
+// Homepage splash copy. The page is framed as a comic being made.
+export const hero = {
+  intro: profile.summary,
+  cta: "Pitch me a story",
+  ctaNote: "30 min, no slides",
+  // The comic on the cover: issue #1 of The Prxmy Files.
+  series: "The Prxmy Files",
+  tagline: "Case files of a backend developer",
+  issue: { number: "01", date: "Nov ’26", price: "Free" },
+  balloon: ["Got a case?", "I’m taking it."],
+  burst: { text: "Open to work!", note: "Full-time · freelance" },
+  coverLines: "The OWASP job · 45 detectors that catch waste · the résumé",
+  // Page 2 inside the cover: the ten-second facts.
+  recap: [
+    { lead: "Backend & full-stack developer", rest: ", second-year CS at Manipal University Jaipur." },
+    { lead: "Web developer at Schrader", rest: " since Jul 2026. 57 merged PRs." },
+    { lead: "Open source:", rest: " OWASP cve-lite-cli and Sugar Labs Music Blocks." },
+    { lead: "Won", rest: " the India Innovates ’26 grand finale." },
+  ],
+};
+
+// The letters page: questions a recruiter would probably ask, answered by "ED:".
+// Signed playfully so nobody reads them as real letters.
+export const mailbag = [
+  { q: "Dear Editor, can you work our hours?", from: "A hiring manager, probably", a: "Already do. Schrader is in Michigan, so my evenings in Jaipur are their working day." },
+  { q: "Full-time or freelance?", from: "A recruiter with a role to fill", a: "Both. Open to full-time roles and freelance projects." },
+  { q: "What happens on the call?", from: "Someone with a problem", a: "30 minutes, no slides. Bring the problem. Pick a slot and it lands on my calendar with a Google Meet link." },
+  { q: "Where’s the résumé?", from: "A busy person", a: "On the back cover, one click away.", link: { label: "Read the résumé", href: "/resume" } },
+];
+
 export const booking = {
   navLabel: "Book a call",
-  eyebrow: "Booking",
   headline: "Book a call",
   intro:
     "Pick a slot and it lands on my calendar with a Google Meet link. I'm in Jaipur, so times are shown in yours.",
@@ -92,9 +131,69 @@ export const awsVideo = {
 };
 
 export const about: string[] = [
-  "I build client websites at Schrader, a digital marketing agency in Michigan, and contribute to open source in my spare time: 9 merged PRs at OWASP, 5 at Sugar Labs.",
+  "I build client websites at Schrader, a digital marketing agency in Michigan, and contribute to open source in my spare time, including OWASP, Sugar Labs and FaceGate.",
   "Most of my own projects are civic tools for Delhi. The latest, JanSamadhan, routes complaints to 10 city authorities and won the India Innovates '26 grand finale.",
 ];
+
+export const portfolio = {
+  edition: "Portfolio / 2026",
+  workLabel: "View work",
+  resumeLabel: "Résumé",
+  awsLabel: "AWS project",
+  locationLabel: "Based in Jaipur, India",
+  currentLabel: "Currently at",
+  workIntro: "Civic platforms, developer tools, and the engineering behind them.",
+  openSourceIntro: "Small fixes. Lasting impact. Contributions to tools people rely on.",
+  activityIntro: "The work, day by day.",
+  contactTitle: "Let’s build something.",
+  contactIntro: "Hiring a backend or full-stack developer? Have a project in mind? I’m open to full-time roles, freelance work, and interesting collaborations.",
+  nav: [
+    { label: "Work", href: "#projects" },
+    { label: "About", href: "#about" },
+    { label: "Open source", href: "#open-source" },
+  ] satisfies Link[],
+  index: [
+    { label: "The cases (projects)", href: "/#cases" },
+    { label: "The night shift (experience)", href: "/#night-shift" },
+    { label: "Education", href: "/#by-day" },
+    { label: "Field reports (open source)", href: "/#field-reports" },
+    { label: "The city at night (GitHub activity)", href: "/#city" },
+    { label: "Letters (contact)", href: "/#letters" },
+    { label: "Résumé", href: "/resume" },
+    { label: "Book a call", href: "/book" },
+    { label: "AWS project", href: "/aws~env" },
+    { label: "GitHub profile", href: "https://github.com/prx-my" },
+  ] satisfies Link[],
+};
+
+// Derived from the technologies already documented in the project descriptions.
+export const toolkit = [
+  { label: "Backend & data", items: ["Python", "FastAPI", "Node.js", "PostGIS", "Supabase", "Redis"] },
+  { label: "Web", items: ["TypeScript", "React", "Next.js", "Vite"] },
+  { label: "Infrastructure & tools", items: ["AWS Lambda", "API Gateway", "S3", "Docker", "Playwright"] },
+];
+
+// Curated quotations: the client recommendation was supplied by Prakhar;
+// the GitHub excerpt was checked against the linked public discussion.
+export const feedback = {
+  client: {
+    excerpt: "He’s reliable, communicates well, and consistently delivers quality work on time.",
+    author: "Bret Schrader",
+    context: "Owner, Schrader Web Solutions · Client recommendation",
+    href: "https://www.linkedin.com/in/bret-schrader/",
+    date: "2026-07-20",
+    fullText: [
+      "Prakhar has been an incredible asset to my agency over the past few weeks. He has built custom websites, set up databases, created high quality graphics, and consistently delivered excellent work for my clients. He’s responsive, proactive, and always available for meetings, updates, and quick fixes when needed.",
+      "I highly recommend Prakhar to anyone looking for web development, custom coding, database solutions, or graphic design. He’s reliable, communicates well, and consistently delivers quality work on time.",
+    ],
+  },
+  upstream: {
+    excerpt: "Thanks, and the work has been consistently good.",
+    author: "@sonukapoor",
+    context: "OWASP/cve-lite-cli · Public feedback on PR #1202",
+    href: "https://github.com/OWASP/cve-lite-cli/pull/1202#issuecomment-5952212718",
+  },
+};
 
 export const experience: Experience[] = [
   {
@@ -103,6 +202,7 @@ export const experience: Experience[] = [
     role: "Web Developer",
     place: "Traverse City, Michigan · Remote",
     period: "Jul 2026 – Present",
+    mergedPRs: 57,
     points: [
       "Joined as a freelancer, now on the team. 57 merged PRs across the agency's client and in-house sites.",
       "Rebuilt the agency's own site in Next.js, including a PageSpeed and Lighthouse audit tool used in sales pitches.",
@@ -110,6 +210,7 @@ export const experience: Experience[] = [
     ],
     links: [
       { label: "Aces Marine & Salvage", href: "https://aces-marine.vercel.app" },
+      { label: "T&J Waterfront Services", href: "https://tjwaterfrontservices.com/" },
       { label: "Grace Electric", href: "https://graceelectric-blond.vercel.app" },
       { label: "Hot Tub Solutions", href: "https://hottubsolutions.vercel.app" },
       { label: "schrader.co", href: "https://schrader.co" },
@@ -119,7 +220,30 @@ export const experience: Experience[] = [
 
 export const projects: Project[] = [
   {
+    name: "EcoAudit",
+    slug: "ecoaudit",
+    caption: "Any public repo. About 120 ways to waste compute.",
+    coverLabel: "The case board: four kinds of waste, one line of proof",
+    myPart: "Wrote 45 of the ~120 detectors and the AWS scan API.",
+    preview: "/portfolio/ecoaudit.jpg",
+    year: "2026",
+    badge: "WeMakeDevs × AWS Environmental Hacks · in progress",
+    summary:
+      "Clones any public repo and reports code, infra, logging and LLM patterns that waste compute, with the exact line as evidence. I wrote 45 of its ~120 detectors and the AWS scan API.",
+    hardPart:
+      "Proving waste from static evidence alone, never running the scanned code, and making detectors written in Python and TypeScript by four people pass one shared contract.",
+    stack: ["Python", "TypeScript", "AWS Lambda", "API Gateway", "S3", "Next.js"],
+    links: [
+      { label: "Demo", href: "/aws-env/video" },
+      { label: "Source", href: "https://github.com/AWS-env/environmental-hacks" },
+    ],
+  },
+  {
     name: "JanSamadhan",
+    slug: "jansamadhan",
+    caption: "Delhi. Ten authorities, one inbox.",
+    coverLabel: "Ward map, scored live",
+    preview: "/portfolio/jansamadhan.jpg",
     year: "2026",
     badge: "Grand Finale winner, India Innovates '26",
     summary:
@@ -134,18 +258,10 @@ export const projects: Project[] = [
     ],
   },
   {
-    name: "Compute-waste scanner",
-    year: "2026",
-    badge: "WeMakeDevs × AWS Environmental Hacks · in progress",
-    summary:
-      "Clones any public repo and reports code, infra, logging and LLM patterns that waste compute, with the exact line as evidence. I wrote 45 of its ~120 detectors and the AWS scan API.",
-    hardPart:
-      "Proving waste from static evidence alone, never running the scanned code, and making detectors written in Python and TypeScript by four people pass one shared contract.",
-    stack: ["Python", "TypeScript", "AWS Lambda", "API Gateway", "S3", "Next.js"],
-    links: [{ label: "Source", href: "https://github.com/AWS-env/environmental-hacks" }],
-  },
-  {
     name: "RailMind",
+    slug: "railmind",
+    caption: "Delhi to Kanpur. 437 km, planned four moves ahead.",
+    coverLabel: "Two trains, one track, one switch thrown in time",
     year: "2026",
     summary:
       "Dispatch decision support for Indian Railways on a simulated 437 km Delhi–Kanpur corridor. Cuts cascade delay by 10% against first-come-first-served dispatch.",
@@ -159,6 +275,9 @@ export const projects: Project[] = [
   },
   {
     name: "oracle-academy",
+    slug: "oracle-academy",
+    caption: "A student hub, run from the terminal.",
+    coverLabel: "The Student Hub, from the command line",
     year: "2026",
     summary:
       "A terminal client for Oracle Academy's Student Hub: sign in once via SSO, then list classes and work through sections from the CLI.",
@@ -169,6 +288,10 @@ export const projects: Project[] = [
   },
   {
     name: "Leafline",
+    slug: "leafline",
+    caption: "Delhi. Where JanSamadhan started.",
+    myPart: "Built the role logic, the citizen and authority dashboards, and the chat assistant's backend.",
+    coverLabel: "A complaint, routed to its department",
     year: "2026",
     badge: "1st Place, InnovateNSUT '26",
     summary:

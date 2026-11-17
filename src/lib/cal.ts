@@ -89,7 +89,9 @@ async function request<T>(
     headers: {
       Authorization: `Bearer ${apiKey()}`,
       "cal-api-version": version,
-      ...(init.body === undefined ? {} : { "Content-Type": "application/json" }),
+      ...(init.body === undefined
+        ? {}
+        : { "Content-Type": "application/json" }),
     },
     body: init.body === undefined ? undefined : JSON.stringify(init.body),
     cache: "no-store",
@@ -142,9 +144,13 @@ export async function listSlots(input: {
   end: string;
   timeZone: string;
 }): Promise<Record<string, CalSlot[]>> {
-  const data = await request<Record<string, CalSlot[]>>("/slots", VERSION.slots, {
-    searchParams: input,
-  });
+  const data = await request<Record<string, CalSlot[]>>(
+    "/slots",
+    VERSION.slots,
+    {
+      searchParams: input,
+    },
+  );
 
   return data ?? {};
 }
@@ -179,7 +185,9 @@ export async function createBooking(input: {
         email: input.email,
         timeZone: input.timeZone,
       },
-      ...(input.notes ? { bookingFieldsResponses: { notes: input.notes } } : {}),
+      ...(input.notes
+        ? { bookingFieldsResponses: { notes: input.notes } }
+        : {}),
       ...(input.guests?.length ? { guests: input.guests } : {}),
     },
   });
@@ -196,16 +204,22 @@ export async function createBooking(input: {
   };
 }
 
-// Maps a thrown error to a JSON response. Cal.com's 5xx stays behind a 502 so a
-// visitor never sees "this site is broken" when it is Cal.com that is down.
+// Keep provider diagnostics and account configuration out of the visitor flow.
 export function calErrorResponse(error: unknown) {
   if (!(error instanceof CalError)) {
     console.error("[cal] unexpected error", error);
     return Response.json({ error: "Something went wrong." }, { status: 500 });
   }
 
-  const status =
-    error.kind === "config" ? 500 : error.status >= 500 ? 502 : error.status;
+  const unavailable =
+    error.kind === "config" || error.status === 401 || error.status === 403;
+  const status = unavailable ? 503 : error.status >= 500 ? 502 : error.status;
+  const message =
+    error.status === 429
+      ? "Too many requests. Please try again in a few minutes."
+      : error.status === 409
+        ? "That time is no longer available. Please choose another slot."
+        : "The calendar is temporarily unavailable. Please email me to arrange a time.";
 
-  return Response.json({ error: error.message }, { status });
+  return Response.json({ error: message }, { status });
 }

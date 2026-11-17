@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Newsreader } from "next/font/google";
+import { Geist, Geist_Mono } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { profile } from "@/content";
+import { socialImage } from "@/lib/metadata";
+import { ThemeProvider } from "@/components/theme-provider";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -14,22 +16,28 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const newsreader = Newsreader({
-  variable: "--font-newsreader",
-  subsets: ["latin"],
-  style: ["normal", "italic"],
-  axes: ["opsz"],
-});
-
 export const metadata: Metadata = {
   metadataBase: new URL(profile.site),
-  title: `${profile.name}, ${profile.role}`,
+  title: {
+    default: `${profile.name}, ${profile.role}`,
+    template: `%s · ${profile.name}`,
+  },
   description: profile.summary,
+  applicationName: profile.brand,
   openGraph: {
-    title: profile.name,
+    title: `${profile.name} · ${profile.role}`,
     description: profile.summary,
     url: profile.site,
-    type: "profile",
+    siteName: `${profile.brand} · ${profile.name}`,
+    locale: "en_IN",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    creator: "@_prxmy",
+    title: `${profile.name} · ${profile.role}`,
+    description: profile.summary,
+    images: [socialImage],
   },
 };
 
@@ -37,10 +45,11 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} ${newsreader.variable} antialiased`}
+      suppressHydrationWarning
+      className={`${geistSans.variable} ${geistMono.variable} antialiased`}
     >
       <body className="font-sans">
-        {children}
+        <ThemeProvider>{children}</ThemeProvider>
         <Analytics />
       </body>
     </html>
