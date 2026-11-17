@@ -118,17 +118,14 @@ export function Motherboard() {
         <span className="hw-drive">
           <i />
           <span />
-          <b />
         </span>
         <span className="hw-drive">
           <i />
           <span />
-          <b />
         </span>
         <span className="hw-drive">
           <i />
           <span />
-          <b />
         </span>
         <span>
           Projects <Arrow />

@@ -465,16 +465,6 @@
     transparent 4px
   );
 }
-.hw-drive b {
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-  background: #a5c754;
-  margin-left: auto;
-}
-.hw-board-drives:hover .hw-drive b {
-  background: #f0e56b;
-}
 .hw-board-gpu {
   left: 55%;
   top: 45%;
@@ -675,21 +665,10 @@
   font-size: 15px;
 }
 .hw-project-copy .hw-project-award {
-  display: flex;
-  align-items: center;
-  gap: 8px;
   font-size: 12px;
   line-height: 1.6;
   color: #465b32;
   margin-top: 15px;
-}
-.hw-project-award::before {
-  content: "";
-  display: block;
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-  background: #70914f;
 }
 .hw-project-stack {
   display: flex;
