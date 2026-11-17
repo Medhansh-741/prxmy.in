@@ -4,7 +4,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { useId, useRef, useState, type KeyboardEvent } from "react";
 import { openSource, projects } from "@/content";
-import { ProjectVisual } from "@/components/project-visual";
 import { Arrow } from "./interactions";
 
 export function Ram({ compact = false }: { compact?: boolean }) {
@@ -240,17 +239,13 @@ export function ProjectRack() {
                 className="hw-project-preview"
                 aria-label={`View ${project.name}`}
               >
-                {project.slug === "jansamadhan" ? (
-                  <ProjectVisual slug={project.slug} />
-                ) : (
-                  <Image
-                    src={project.preview}
-                    alt={`${project.name} project cover`}
-                    fill
-                    sizes="(max-width: 700px) calc(100vw - 40px), (max-width: 1200px) 46vw, 525px"
-                    style={{ objectFit: "cover" }}
-                  />
-                )}
+                <Image
+                  src={project.preview}
+                  alt={project.previewAlt ?? `${project.name} project cover`}
+                  fill
+                  sizes="(max-width: 700px) calc(100vw - 40px), (max-width: 1200px) 46vw, 525px"
+                  style={{ objectFit: project.slug === "jansamadhan" ? "contain" : "cover" }}
+                />
               </Link>
             )}
             <div className="hw-project-copy">

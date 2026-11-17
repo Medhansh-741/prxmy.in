@@ -77,7 +77,6 @@ export default async function Home() {
               </Link>
             </div>
             <p className="hw-availability">
-              <span aria-hidden="true" />
               Open to full-time & freelance work
             </p>
           </div>

@@ -252,12 +252,6 @@
   color: var(--wb-muted);
   font-size: 13px;
 }
-.hw-availability > span {
-  width: 6px;
-  height: 6px;
-  background: #527d34;
-  border-radius: 50%;
-}
 /* The circuit board is a second, visual navigation—not a fake system dashboard. */
 .hw-motherboard {
   width: 100%;

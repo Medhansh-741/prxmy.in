@@ -21,6 +21,7 @@ export type Project = {
   // What I did, in one line. Missing ones show a pencil note on the case file.
   myPart?: string;
   preview?: string;
+  previewAlt?: string;
   coverLabel?: string;
   year: string;
   badge?: string;
@@ -242,8 +243,9 @@ export const projects: Project[] = [
     name: "JanSamadhan",
     slug: "jansamadhan",
     caption: "Delhi. Ten authorities, one inbox.",
-    coverLabel: "Ward map, scored live",
-    preview: "/portfolio/jansamadhan.jpg",
+    coverLabel: "JanSamadhan sign-in screen",
+    preview: "/portfolio/jansamadhan.webp",
+    previewAlt: "JanSamadhan sign-in screen with email and Google login beside an illustrated city skyline",
     year: "2026",
     badge: "Grand Finale winner, India Innovates '26",
     summary:

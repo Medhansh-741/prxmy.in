@@ -81,11 +81,11 @@ export default async function ProjectPage({
           </div>
         </header>
         <figure className="wb-project-preview">
-          {project.preview && project.slug !== "jansamadhan" ? (
+          {project.preview ? (
             <div className="wb-project-image">
               <Image
                 src={project.preview}
-                alt={`${project.name} project cover`}
+                alt={project.previewAlt ?? `${project.name} project cover`}
                 loading="eager"
                 fill
                 sizes="(max-width: 760px) calc(100vw - 40px), (max-width: 1232px) calc(100vw - 112px), 1120px"
@@ -96,8 +96,8 @@ export default async function ProjectPage({
             <ProjectVisual slug={project.slug} />
           )}
           <figcaption className="wb-mono">
-            {project.preview && project.slug !== "jansamadhan"
-              ? "Project cover"
+            {project.preview
+              ? "Project preview"
               : "System illustration"}{" "}
             / {project.name}
           </figcaption>
