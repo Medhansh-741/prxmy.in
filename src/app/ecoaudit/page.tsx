@@ -112,8 +112,12 @@ export default function AwsEnv() {
                     <span className="eco-sourceLabel">arXiv · Research paper</span>
                     <span className="eco-researchTitle">Watts This Smell</span>
                     <span className="eco-researchNote">Strengthened our approach during development.</span>
+                    <span className="eco-previewCredit">Mehditabar, Rajput &amp; Sharma · CC BY 4.0</span>
                   </span>
-                  <FiArrowUpRight className="eco-sourceArrow" aria-hidden="true" />
+                  <span className="eco-researchPreview eco-paperPreview">
+                    <Image src="/ecoaudit/watts-this-smell.png" fill sizes="(max-width: 760px) 76px, 112px" alt="First page of the paper" />
+                    <FiArrowUpRight className="eco-sourceArrow" aria-hidden="true" />
+                  </span>
                 </a>
               </li>
               <li>
@@ -123,8 +127,12 @@ export default function AwsEnv() {
                     <span className="eco-sourceLabel">MIT News · Article</span>
                     <span className="eco-researchTitle">Generative AI’s environmental impact</span>
                     <span className="eco-researchNote">Reinforced the environmental problem after we built EcoAudit.</span>
+                    <span className="eco-previewCredit">Image: iStock; edited by MIT News</span>
                   </span>
-                  <FiArrowUpRight className="eco-sourceArrow" aria-hidden="true" />
+                  <span className="eco-researchPreview">
+                    <Image src="/ecoaudit/mit-ai-climate.jpg" fill sizes="(max-width: 760px) 76px, 112px" alt="Laptop connected to rows of servers" />
+                    <FiArrowUpRight className="eco-sourceArrow" aria-hidden="true" />
+                  </span>
                 </a>
               </li>
             </ul>
