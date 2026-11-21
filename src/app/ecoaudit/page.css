@@ -49,15 +49,13 @@
 .eco-page .eco-primary:hover { background: #efefeb; color: var(--eco-text); }
 .eco-projectLinks { display: flex; align-items: center; flex-wrap: wrap; gap: 8px 12px; margin-top: 16px; }
 .eco-projectLinks .eco-primary { margin-top: 0; }
-.eco-hackathon { margin-top: 12px; color: var(--eco-secondary); font-size: 12px; }
-.eco-hackathon a { text-decoration: underline; }
 .eco-hackathon span { display: block; margin-top: 4px; }
 .eco-sectionHeading { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 16px; }
 .eco-sectionHeading h2, .eco-team > h2 { font-size: 22px; line-height: 1.3; font-weight: 600; letter-spacing: -.02em; }
 .eco-fullScreen { display: inline-flex; align-items: center; min-height: 44px; font-size: 14px; color: var(--eco-secondary); text-decoration: underline; }
 .eco-video { overflow: hidden; aspect-ratio: 16 / 9; border-radius: 8px; background: #171717; }
 .eco-video iframe { display: block; width: 100%; height: 100%; border: 0; }
-.eco-team { margin-top: 0; border-top: 1px solid var(--eco-line); padding-top: 20px; }
+.eco-team, .eco-research { display: flex; flex-direction: column; align-self: stretch; border-top: 1px solid var(--eco-line); padding-top: 20px; }
 .eco-people { list-style: none; margin-top: 8px; }
 .eco-people > li { display: grid; grid-template-columns: minmax(0, 1fr) auto auto; align-items: center; gap: 16px; min-height: 48px; border-bottom: 1px solid var(--eco-line); }
 .eco-people > li:last-child { border-bottom: 0; }
@@ -72,8 +70,6 @@
 .eco-contactLinks a { width: 44px; height: 44px; justify-content: center; flex-shrink: 0; border-radius: 4px; }
 .eco-contactLinks a:hover { background: #efefeb; }
 .eco-contactLinks svg { width: 16px; height: 16px; }
-.eco-research { display: flex; flex-direction: column; align-self: stretch; border-top: 1px solid var(--eco-line); padding-block: 20px 13px; margin-top: 0; }
-.eco-research .eco-hackathon { margin-top: auto; padding-top: 12px; }
 .eco-research > h2 { font-size: 22px; line-height: 1.3; font-weight: 600; letter-spacing: -.02em; }
 .eco-researchEntries { margin-top: 8px; list-style: none; }
 .eco-researchEntries li + li { border-top: 1px solid var(--eco-line); }
@@ -86,8 +82,12 @@
 .eco-researchTitle { display: block; font-size: 16px; font-weight: 600; }
 .eco-researchNote { display: block; margin-top: 2px; color: var(--eco-secondary); font-size: 13px; line-height: 20px; }
 .eco-researchEntries a:is(:hover, :focus-visible) .eco-researchTitle { text-decoration: underline; }
-.eco-footer { border-top: 1px solid var(--eco-line); padding-block: 24px; font-size: 12px; color: var(--eco-secondary); }
+.eco-footer { display: flex; align-items: baseline; justify-content: space-between; flex-wrap: wrap; gap: 12px 24px; border-top: 1px solid var(--eco-line); padding-block: 24px; font-size: 12px; color: var(--eco-secondary); }
 .eco-footer a { text-decoration: underline; }
+@media (width > 1100px) {
+  .eco-people, .eco-researchEntries { display: grid; flex: 1; grid-auto-rows: 1fr; }
+  .eco-researchEntries a { height: 100%; align-content: center; }
+}
 @media (max-width: 1100px) {
   .eco-width { width: min(760px, calc(100% - 64px)); }
   .eco-opening { grid-template-columns: minmax(0, 1fr); row-gap: 32px; }

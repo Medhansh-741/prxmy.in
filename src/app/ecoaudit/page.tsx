@@ -128,7 +128,6 @@ export default function AwsEnv() {
                 </a>
               </li>
             </ul>
-            <p className="eco-hackathon"><a href="https://techfest.org/competitions/aws" {...external}>Campus to Cloud Hackathon · Techfest, IIT Bombay</a><span>Sponsored by AWS</span></p>
           </section>
 
           <section id="team" className="eco-team" aria-labelledby="team-title">
@@ -156,7 +155,13 @@ export default function AwsEnv() {
         </div>
 
       </main>
-      <footer className="eco-footer eco-width">EcoAudit · <a href={`${sourceUrl}/blob/main/LICENSE`} {...external}>MIT License</a></footer>
+      <footer className="eco-footer eco-width">
+        <p className="eco-hackathon">
+          <a href="https://techfest.org/competitions/aws" {...external}>Campus to Cloud Hackathon · Techfest, IIT Bombay</a>
+          <span>Sponsored by AWS</span>
+        </p>
+        <p>EcoAudit · <a href={`${sourceUrl}/blob/main/LICENSE`} {...external}>MIT License</a></p>
+      </footer>
     </div>
   );
 }
