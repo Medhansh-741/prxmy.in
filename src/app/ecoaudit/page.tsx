@@ -111,7 +111,7 @@ export default function AwsEnv() {
                   <span>
                     <span className="eco-sourceLabel">arXiv · Research paper</span>
                     <span className="eco-researchTitle">Watts This Smell</span>
-                    <span className="eco-researchNote">Strengthened our approach during development.</span>
+                    <span className="eco-researchNote">The authors grouped 320 software inefficiencies into 12 patterns of energy waste. That framework sharpened our checks during development.</span>
                   </span>
                   <FiArrowUpRight className="eco-sourceArrow" aria-hidden="true" />
                 </a>
@@ -122,7 +122,7 @@ export default function AwsEnv() {
                   <span>
                     <span className="eco-sourceLabel">MIT News · Article</span>
                     <span className="eco-researchTitle">Generative AI’s environmental impact</span>
-                    <span className="eco-researchNote">Reinforced the environmental problem after we built EcoAudit.</span>
+                    <span className="eco-researchNote">Running AI models takes electricity long after training, and cooling the servers takes water. We found this explainer after building EcoAudit.</span>
                   </span>
                   <FiArrowUpRight className="eco-sourceArrow" aria-hidden="true" />
                 </a>
